@@ -133,7 +133,7 @@ else
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-without-hadoop.tgz
         wget http://www.us.apache.org/dist/hadoop/common/hadoop-$HADOOP_MAJOR_VERSION/hadoop-$HADOOP_MAJOR_VERSION.tar.gz 
         tar xvzf hadoop-*.tar.gz > /tmp/spark-ec2_hadoop_custom.log
-        rm hadoop-*.tgz
+        rm hadoop-*.tar.gz
       fi
       if [ $? != 0 ]; then
         echo "ERROR: Unknown Spark version"
@@ -145,7 +145,7 @@ else
   tar xvzf spark-*.tgz > /tmp/spark-ec2_spark.log
   rm spark-*.tgz
   mv `ls -d spark-* | grep -v ec2` spark
-  mv `ls -d hadoop-* | grep -v tar` hadoop_new
+  mv `ls -d hadoop-*` hadoop_new
 fi
 
 popd > /dev/null

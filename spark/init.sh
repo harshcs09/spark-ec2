@@ -130,18 +130,22 @@ else
       elif [[ "$HADOOP_MAJOR_VERSION" == "2" ]]; then
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-cdh4.tgz
       else
-        wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop2.4.tgz
+        wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-without-hadoop.tgz
+        wget http://www.eu.apache.org/dist/hadoop/common/hadoop-$HADOOP_MAJOR_VERSION/hadoop-$HADOOP_MAJOR_VERSION.tar.gz 
+        tar xvzf hadoop-*.tgz > /tmp/spark-ec2_hadoop_custom.log
+        #rm hadoop-*.tgz
       fi
       if [ $? != 0 ]; then
         echo "ERROR: Unknown Spark version"
         return -1
       fi
   esac
-
+  
   echo "Unpacking Spark"
   tar xvzf spark-*.tgz > /tmp/spark-ec2_spark.log
   rm spark-*.tgz
   mv `ls -d spark-* | grep -v ec2` spark
+  mv `ls -d hadoop-* | grep -v tgz` hadoop
 fi
 
 popd > /dev/null

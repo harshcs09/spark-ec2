@@ -145,7 +145,7 @@ else
   tar xvzf spark-*.tgz > /tmp/spark-ec2_spark.log
   rm spark-*.tgz
   mv `ls -d spark-* | grep -v ec2` spark
-  mv `ls -d hadoop-* | grep -v tgz` hadoop
+  mv `ls -d hadoop-* | grep -v tar` hadoop
 fi
 
 popd > /dev/null

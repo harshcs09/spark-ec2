@@ -131,7 +131,7 @@ else
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-cdh4.tgz
       else
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-without-hadoop.tgz
-        wget http://www.eu.apache.org/dist/hadoop/common/hadoop-$HADOOP_MAJOR_VERSION/hadoop-$HADOOP_MAJOR_VERSION.tar.gz 
+        wget http://www.us.apache.org/dist/hadoop/common/hadoop-$HADOOP_MAJOR_VERSION/hadoop-$HADOOP_MAJOR_VERSION.tar.gz 
         tar xvzf hadoop-*.tgz > /tmp/spark-ec2_hadoop_custom.log
         #rm hadoop-*.tgz
       fi

@@ -41,7 +41,7 @@ case "$HADOOP_MAJOR_VERSION" in
     ln -s /root/ephemeral-hdfs/conf /root/ephemeral-hdfs/etc/hadoop
     ;;
    *)
-    wget http://s3.amazonaws.com/spark-related-packages/hadoop-$HADOOP_MAJOR_VERSION.tar.gz
+    wget http://www.us.apache.org/dist/hadoop/common/hadoop-$HADOOP_MAJOR_VERSION/hadoop-$HADOOP_MAJOR_VERSION.tar.gz
     echo "Unpacking Hadoop"
     tar xvzf hadoop-*.tar.gz > /tmp/spark-ec2_hadoop.log
     rm hadoop-*.tar.gz

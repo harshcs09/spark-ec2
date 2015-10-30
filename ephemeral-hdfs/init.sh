@@ -40,10 +40,17 @@ case "$HADOOP_MAJOR_VERSION" in
     rm -rf /root/ephemeral-hdfs/etc/hadoop/
     ln -s /root/ephemeral-hdfs/conf /root/ephemeral-hdfs/etc/hadoop
     ;;
+   *)
+    wget http://s3.amazonaws.com/spark-related-packages/hadoop-$HADOOP_MAJOR_VERSION.tar.gz
+    echo "Unpacking Hadoop"
+    tar xvzf hadoop-*.tar.gz > /tmp/spark-ec2_hadoop.log
+    rm hadoop-*.tar.gz
+    mv hadoop-$HADOOP_MAJOR_VERSION/ ephemeral-hdfs/
 
-  *)
-     echo "ERROR: Unknown Hadoop version"
-     return 1
+    # Have single conf dir
+    rm -rf /root/ephemeral-hdfs/etc/hadoop/
+    ln -s /root/ephemeral-hdfs/conf /root/ephemeral-hdfs/etc/hadoop
+    ;;
 esac
 /root/spark-ec2/copy-dir /root/ephemeral-hdfs
 

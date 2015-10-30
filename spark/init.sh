@@ -146,7 +146,7 @@ else
   rm spark-*.tgz
   mv `ls -d spark-* | grep -v ec2` spark
   mkdir -p hadoop_new
-  mv `ls -d hadoop-*` hadoop_new
+  mv `ls -d hadoop-* | grep -v native` hadoop_new
 fi
 
 popd > /dev/null

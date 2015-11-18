@@ -9,7 +9,32 @@
     <name>hadoop.tmp.dir</name>
     <value>/mnt/ephemeral-hdfs</value>
   </property>
+  
+  <property>
+    <name>fs.s3n.awsAccessKeyId</name>
+    <value>{{aws_access_key_id}}</value>
+  </property>
 
+  <property>
+    <name>fs.s3n.awsSecretAccessKey</name>
+    <value>{{aws_secret_access_key}}</value>
+  </property>
+  
+  <property>
+    <name>fs.s3a.access.key</name>
+    <value>{{aws_access_key_id}}</value>
+  </property>
+
+  <property>
+    <name>fs.s3a.secret.key</name>
+    <value>{{aws_secret_access_key}}</value>
+  </property>
+  
+  <property>
+    <name>spark.sql.parquet.output.committer.class</name>
+    <value>org.apache.spark.sql.parquet.DirectParquetOutputCommitter</value>
+  </property>
+  
   <property>
     <name>fs.default.name</name>
     <value>hdfs://{{active_master}}:9000</value>

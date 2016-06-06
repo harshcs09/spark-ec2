@@ -124,6 +124,18 @@ else
         wget http://s3.amazonaws.com/spark-related-packages/spark-1.2.1-bin-hadoop2.4.tgz
       fi
       ;;
+    2.0.0)
+      if [[ "$HADOOP_MAJOR_VERSION" == "1" ]]; then
+        wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop1.tgz
+      elif [[ "$HADOOP_MAJOR_VERSION" == "2" ]]; then
+        wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-cdh4.tgz
+      else
+        wget http://ec2-52-40-202-63.us-west-2.compute.amazonaws.com:8000/spark-2.0.0-bin-without-hadoop.tgz
+        #wget http://www.us.apache.org/dist/hadoop/common/hadoop-$HADOOP_MAJOR_VERSION/hadoop-$HADOOP_MAJOR_VERSION.tar.gz 
+        #tar xvzf hadoop-*.tar.gz > /tmp/spark-ec2_hadoop_custom.log
+        #rm hadoop-*.tar.gz
+      fi
+      ;;
     *)
       if [[ "$HADOOP_MAJOR_VERSION" == "1" ]]; then
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop1.tgz
